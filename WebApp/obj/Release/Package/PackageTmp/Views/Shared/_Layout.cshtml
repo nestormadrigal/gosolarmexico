@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Go Solar Mexico</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    @Html.Partial("_html5shiv")
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/Content/bootstrapcss")
+    <script src="~/Scripts/jquery-2.1.3.js"></script>
+    <link href="~/Content/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" media="screen and (min-width: 0px)" href="~/Content/small.css" />
+    <link rel="stylesheet" media="screen and (min-width: 350px)" href="~/Content/medium.css" />
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js"></script>
+</head>
+<body>
+    <div class="container-fluid" style="background-color: #424242; text-align: center">
+        <div class="row">
+            <div class="col-xs-4">
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <div class="navbar navbar-default" role="navigation" style="background-color: #424242; border-color: #424242">
+                        <div class="navbar-header" style="text-align: center">
+                            <button id="toggle-btn" type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+                        <div class="navbar-collapse collapse" style="border-color: #424242; margin-top: 10px">
+                            <ul id="main-menu" class="nav navbar-nav">
+                                <li>@Html.ActionLink("Inicio", "Index", "Home", null, new { style = "color: white" })</li>
+                                <li>@Html.ActionLink("Cambiar password", "ChangePassword", "Account", null, new { style = "color: white" })</li>
+                            </ul>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div id="div-header" class="col-xs-8">
+                <span>
+                    @Html.ActionLink("Go Solar Mexico!", "Index", "Home", null, new { id = "brand-header", style = "color: white" })
+                </span>
+            </div>
+        </div>
+        <div class="row">
+            <section id="login">
+                @Html.Partial("_LoginPartial")
+            </section>
+        </div>
+    </div>
+    <div id="body">
+        @RenderBody()
+    </div>
+    <footer class="footer">
+        <div class="container-fluid" style="text-align: center">
+            <div class="row" style="color: white; font-size: small">
+                Terms of use  |  Fluentum 2015            
+            </div>
+        </div>
+    </footer>
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
